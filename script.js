@@ -5,6 +5,8 @@ createApp({
         return {
             apiUrl: './server.php',
             diskList: [],
+            /*             singleDisk: [],
+                        diskDetails: false, */
         }
     },
     methods: {
@@ -20,10 +22,21 @@ createApp({
                 .then(function () {
                     // always executed
                 });
-        }
+        },
+        /*         getDetails(index) {
+                    axios.get(this.apiUrl).then((response) => {
+                        console.log(response.data[index]);
+                        this.singleDisk = response.data[index];
+                        this.diskDetails = true;
+                    })
+                        .catch(function (error) {
+                            console.log(error);
+                        })
+                        .then(function () {
+                        });
+                }*/
     },
     created() {
         this.getDisk();
-        console.log(this.diskList);
     }
 }).mount('#app')

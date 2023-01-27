@@ -25,6 +25,8 @@ Al click su un disco, recuperare e mostrare i dati del disco selezionato.
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- Vue 3 -->
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <!-- Custom css -->
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body class="bg-secondary">
@@ -42,8 +44,8 @@ Al click su un disco, recuperare e mostrare i dati del disco selezionato.
         <main>
             <div class="container">
                 <div class="row g-3">
-                    <div v-for="disk in diskList" class="col-4">
-                        <div class="card bg-dark text-white text-center" @click="">
+                    <div v-for="(disk, index) in diskList" class="col-4">
+                        <div class="card bg-dark text-white text-center">
                             <img :src="disk.poster" class="card-img-top img-fluid" :alt="disk.author">
                             <div class="card-body">
                                 <h5 class="card-title">{{disk.title}}</h5>
