@@ -24,5 +24,6 @@ createApp({
     },
     created() {
         this.getDisk();
+        console.log(this.diskList);
     }
 }).mount('#app')
