@@ -29,7 +29,7 @@ Al click su un disco, recuperare e mostrare i dati del disco selezionato.
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body class="bg-secondary">
+<body>
     <div id="app">
         <header class="mb-4">
             <nav class="navbar bg-dark">
@@ -42,16 +42,22 @@ Al click su un disco, recuperare e mostrare i dati del disco selezionato.
             </nav>
         </header>
         <main>
-            <div class="container">
-                <div class="row g-3">
-                    <div v-for="(disk, index) in diskList" class="col-4">
-                        <div class="card bg-dark text-white text-center">
-                            <img :src="disk.poster" class="card-img-top img-fluid" :alt="disk.author">
-                            <div class="card-body">
-                                <h5 class="card-title">{{disk.title}}</h5>
-                                <p class="card-text">{{disk.author}}</p>
-                                <p cass="card-text">{{disk.year}}</p>
-                            </div>
+            <div class="container d-flex justify-content-center">
+                <div class="disk-container">
+                    <div v-for="(disk, index) in diskList" :key="index" @click="getDetailDisk(index)" class="disk">
+                        <img :src="disk.poster" :alt="disk.title" />
+                        <h3>{{ disk.title }}</h3>
+                        <span>{{ disk.author }}</span>
+                    </div>
+                </div>
+                <div v-if="showDetailDisk" class="disk-details-container">
+                    <div class="disk single-disk">
+                        <img :src="singleDisk.poster" :alt="singleDisk.title" />
+                        <span>{{ singleDisk.author }}</span>
+                        <span>{{ singleDisk.genre }}</span>
+                        <span>{{ singleDisk.year }}</span>
+                        <div class="close-button-container">
+                            <button @click="showDetailDisk = false" class="button close-button">X</button>
                         </div>
                     </div>
                 </div>

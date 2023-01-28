@@ -5,8 +5,10 @@ createApp({
         return {
             apiUrl: './server.php',
             diskList: [],
-            /*             singleDisk: [],
-                        diskDetails: false, */
+            singleDisk: [],
+            showDetailDisk: false
+
+
         }
     },
     methods: {
@@ -23,18 +25,17 @@ createApp({
                     // always executed
                 });
         },
-        /*         getDetails(index) {
-                    axios.get(this.apiUrl).then((response) => {
-                        console.log(response.data[index]);
-                        this.singleDisk = response.data[index];
-                        this.diskDetails = true;
-                    })
-                        .catch(function (error) {
-                            console.log(error);
-                        })
-                        .then(function () {
-                        });
-                }*/
+        getDetailDisk(index) {
+            const params = {
+                diskIndex: index
+            }
+
+            axios.get(this.apiUrl, { params })
+                .then(response => {
+                    this.showDetailDisk = true;
+                    this.singleDisk = response.data;
+                })
+        }
     },
     created() {
         this.getDisk();
